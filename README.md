@@ -51,3 +51,6 @@ For each zk server I'd add the following to
 classes:
     - zk::server
 ```
+
+Then run Puppet and `/sbin/restart zookeeper` (restarts aren't
+initiated by Puppet here so they can be orchestrated elsewhere).
