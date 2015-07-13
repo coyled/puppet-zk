@@ -1,0 +1,30 @@
+#
+# managed via puppet
+#
+
+# setting documentation:
+#   http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_configuration
+
+# The number of milliseconds of each tick
+tickTime=2000
+
+# The number of ticks that the initial
+# synchronization phase can take
+initLimit=10
+
+# The number of ticks that can pass between
+# sending a request and getting an acknowledgement
+syncLimit=5
+
+# the directory where the snapshot is stored.
+dataDir=/var/lib/zookeeper
+
+# the port at which the clients will connect
+clientPort=2181
+
+# specify all zookeeper servers
+# The fist port is used by followers to connect to the leader
+# The second one is used for leader election
+<% @servers.to_a.each do |server| -%>
+server.<%= server['server_id'] -%>=<%= server['host'] -%>:2888:3888
+<% end -%>

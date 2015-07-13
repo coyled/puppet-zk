@@ -1,0 +1,10 @@
+<%
+myid = ''
+
+@servers.to_a.each do |server|
+   if server['host'] == @hostname
+      myid = server['server_id']
+   end
+end
+-%>
+<%= myid -%>
